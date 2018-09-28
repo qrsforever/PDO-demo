@@ -2,7 +2,7 @@
 	//define our connection settings
 	$host = "localhost";
 	$dbuser = "root";
-	$dbpass = "root";
+	$dbpass = "123456";
 	$dbname = "pokemon";
 	//create a new instance of the PDO class by stating we want the mysql: driver
 	//also it needs our connection settings
@@ -66,7 +66,7 @@
 						$name = $_GET['pkmn_name'];
 						$name = "%".$name."%";//need to include the wildcard characters as input to the query
 						//define the query
-						$query = "SELECT SPECIES_NAME, TYPE1 FROM SPECIES WHERE SPECIES_NAME LIKE ?";
+						$query = "SELECT SPECIES_NAME, TYPE1 FROM species WHERE SPECIES_NAME LIKE ?";
 						//create a $stmt variable to hold our working statemnt and use the prepare() function to prepare the SQL
 						$stmt = $db->prepare($query);
 						//bind the $name variable to the first ? in the SQL statement. Tell it to treat it like a stirng
@@ -87,7 +87,7 @@
 				}//end check to see if connected
 			?>
 		</table>
-		
+	    <br><br><br>	
 		<div id="markup">
 		<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
     <span class="hljs-comment">//define our connection settings</span>

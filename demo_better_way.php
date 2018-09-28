@@ -3,7 +3,7 @@
 	//define our connection settings
 	$host = "localhost";
 	$dbuser = "root";
-	$dbpass = "root";
+	$dbpass = "123456";
 	$dbname = "pokemon";
 	$db = new PDO_MySQL();//create a new instance of the class
 	$db->connect($host,$dbuser,$dbpass,$dbname);//use the connect function
@@ -64,7 +64,7 @@
 						$name = $_GET['pkmn_name'];
 						$name = "%".$name."%";//need to include the wildcard characters as input to the query
 						//define the query
-						$query = "SELECT SPECIES_NAME, TYPE1 FROM SPECIES WHERE SPECIES_NAME LIKE ?";
+						$query = "SELECT SPECIES_NAME, TYPE1 FROM species WHERE SPECIES_NAME LIKE ?";
 						//query the database using the query_prepared() function to have it automatically prepare the SQL statement
 						//and pass it an array of the variables that match the ? in the statement in the same order as they appear
 						$result = $db->query_prepared($query,array($name));
@@ -79,6 +79,7 @@
 				}//end is_connected
 			?>
 		</table>
+        <br><br><br>
 		<div id="markup">
 		<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
     <span class="hljs-keyword">require</span>(<span class="hljs-string">'pdo_mysql_class.php'</span>);<span class="hljs-comment">//neededed to import the custom PDO_MySQL class into the program</span>

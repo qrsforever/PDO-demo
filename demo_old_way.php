@@ -2,7 +2,7 @@
 	//define our connection settings
 	$host = "localhost";
 	$dbuser = "root";
-	$dbpass = "root";
+	$dbpass = "123456";
 	$dbname = "pokemon";
 	//create a variable to hold the reference to our database connection
 	$db = mysqli_connect($host,$dbuser,$dbpass,$dbname);
@@ -61,7 +61,7 @@
 						//get the user's input from the GET global array
 						$name = $_GET['pkmn_name'];
 						//define the query
-						$query = "SELECT SPECIES_NAME, TYPE1 FROM SPECIES WHERE SPECIES_NAME LIKE '%".$name."%'";
+						$query = "SELECT SPECIES_NAME, TYPE1 FROM species WHERE SPECIES_NAME LIKE '%".$name."%'";
 						//query the database using the mysqli_query() function
 						$result = mysqli_query($db,$query);
 						//check to see if the query was successful
@@ -78,42 +78,43 @@
 				}//end check to see if connected
 			?>
 		</table>
+        <br><br><br>
 		<div id="markup">
 		<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
-    <span class="hljs-comment">//define our connection settings</span>
-    <span class="hljs-variable">$host</span> = <span class="hljs-string">"localhost"</span>;
-    <span class="hljs-variable">$dbuser</span> = <span class="hljs-string">"username"</span>;
-    <span class="hljs-variable">$dbpass</span> = <span class="hljs-string">"password"</span>;
-    <span class="hljs-variable">$dbname</span> = <span class="hljs-string">"pokemon"</span>;
-    <span class="hljs-comment">//create a variable to hold the reference to our database connection</span>
-    <span class="hljs-variable">$db</span> = mysqli_connect(<span class="hljs-variable">$host</span>,<span class="hljs-variable">$dbuser</span>,<span class="hljs-variable">$dbpass</span>,<span class="hljs-variable">$dbname</span>);
-<span class="hljs-preprocessor">?&gt;</span>
-&lt;table&gt;
-<span class="hljs-preprocessor">&lt;?php</span>
-    <span class="hljs-comment">//check to see if the database is connected before continuing and attempting to query it</span>
-    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$db</span>){
+        <span class="hljs-comment">//define our connection settings</span>
+        <span class="hljs-variable">$host</span> = <span class="hljs-string">"localhost"</span>;
+        <span class="hljs-variable">$dbuser</span> = <span class="hljs-string">"username"</span>;
+        <span class="hljs-variable">$dbpass</span> = <span class="hljs-string">"password"</span>;
+        <span class="hljs-variable">$dbname</span> = <span class="hljs-string">"pokemon"</span>;
+        <span class="hljs-comment">//create a variable to hold the reference to our database connection</span>
+        <span class="hljs-variable">$db</span> = mysqli_connect(<span class="hljs-variable">$host</span>,<span class="hljs-variable">$dbuser</span>,<span class="hljs-variable">$dbpass</span>,<span class="hljs-variable">$dbname</span>);
+        <span class="hljs-preprocessor">?&gt;</span>
+        &lt;table&gt;
+        <span class="hljs-preprocessor">&lt;?php</span>
+        <span class="hljs-comment">//check to see if the database is connected before continuing and attempting to query it</span>
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$db</span>){
         <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">'pkmn_name'</span>])){
-            <span class="hljs-comment">//get the user's input from the GET global array</span>
-            <span class="hljs-variable">$name</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">'pkmn_name'</span>];
-            <span class="hljs-comment">//define the query</span>
-            <span class="hljs-variable">$query</span> = <span class="hljs-string">"SELECT SPECIES_NAME, TYPE1 FROM SPECIES WHERE SPECIES_NAME LIKE '%"</span>.<span class="hljs-variable">$name</span>.<span class="hljs-string">"%'"</span>;
-            <span class="hljs-comment">//query the database using the mysqli_query() function</span>
-            <span class="hljs-variable">$result</span> = mysqli_query(<span class="hljs-variable">$db</span>,<span class="hljs-variable">$query</span>);
-            <span class="hljs-comment">//check to see if the query was successful</span>
-            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$result</span>){
-                <span class="hljs-comment">//use mysqli_num_rows() function to determine if the query returned any rows</span>
-                <span class="hljs-keyword">if</span>(mysqli_num_rows(<span class="hljs-variable">$result</span>) &gt; <span class="hljs-number">0</span>){
-                    <span class="hljs-comment">//while there are still rows left in the result set, continue iterating and writing out the table rows with the data from the record</span>
-                    <span class="hljs-keyword">while</span>(<span class="hljs-variable">$row</span> = mysqli_fetch_assoc(<span class="hljs-variable">$result</span>)){
-                        <span class="hljs-keyword">echo</span>(<span class="hljs-string">"&lt;tr&gt;&lt;td&gt;"</span>.<span class="hljs-variable">$row</span>[<span class="hljs-string">'SPECIES_NAME'</span>].<span class="hljs-string">"&lt;/td&gt;&lt;td&gt;"</span>.<span class="hljs-variable">$row</span>[<span class="hljs-string">'TYPE1'</span>].<span class="hljs-string">"&lt;/td&gt;&lt;/tr&gt;"</span>);
-                    }<span class="hljs-comment">//end while</span>
-                }<span class="hljs-comment">//end mysqli_num_rows</span>
-            }<span class="hljs-comment">//end check for successful query</span>
-        }<span class="hljs-comment">//end isset</span>
-    }<span class="hljs-comment">//end check to see if connected</span>
-<span class="hljs-preprocessor">?&gt;</span>
-&lt;/table&gt;
-</code></pre>
+                <span class="hljs-comment">//get the user's input from the GET global array</span>
+                <span class="hljs-variable">$name</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">'pkmn_name'</span>];
+                <span class="hljs-comment">//define the query</span>
+                <span class="hljs-variable">$query</span> = <span class="hljs-string">"SELECT SPECIES_NAME, TYPE1 FROM SPECIES WHERE SPECIES_NAME LIKE '%"</span>.<span class="hljs-variable">$name</span>.<span class="hljs-string">"%'"</span>;
+                <span class="hljs-comment">//query the database using the mysqli_query() function</span>
+                <span class="hljs-variable">$result</span> = mysqli_query(<span class="hljs-variable">$db</span>,<span class="hljs-variable">$query</span>);
+                <span class="hljs-comment">//check to see if the query was successful</span>
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$result</span>){
+                    <span class="hljs-comment">//use mysqli_num_rows() function to determine if the query returned any rows</span>
+                    <span class="hljs-keyword">if</span>(mysqli_num_rows(<span class="hljs-variable">$result</span>) &gt; <span class="hljs-number">0</span>){
+                        <span class="hljs-comment">//while there are still rows left in the result set, continue iterating and writing out the table rows with the data from the record</span>
+                        <span class="hljs-keyword">while</span>(<span class="hljs-variable">$row</span> = mysqli_fetch_assoc(<span class="hljs-variable">$result</span>)){
+                            <span class="hljs-keyword">echo</span>(<span class="hljs-string">"&lt;tr&gt;&lt;td&gt;"</span>.<span class="hljs-variable">$row</span>[<span class="hljs-string">'SPECIES_NAME'</span>].<span class="hljs-string">"&lt;/td&gt;&lt;td&gt;"</span>.<span class="hljs-variable">$row</span>[<span class="hljs-string">'TYPE1'</span>].<span class="hljs-string">"&lt;/td&gt;&lt;/tr&gt;"</span>);
+                        }<span class="hljs-comment">//end while</span>
+                    }<span class="hljs-comment">//end mysqli_num_rows</span>
+                }<span class="hljs-comment">//end check for successful query</span>
+            }<span class="hljs-comment">//end isset</span>
+        }<span class="hljs-comment">//end check to see if connected</span>
+        <span class="hljs-preprocessor">?&gt;</span>
+        &lt;/table&gt;
+        </code></pre>
 		</div>
 	</body>
 </html>
